@@ -36,6 +36,12 @@
                 </a>
             </li>
 
+            <li class="sidebar-item {{ Request::is('admin/laporan*') ? 'active' : '' }} ">
+                <a class="sidebar-link" href="{{ route('laporan.index') }}">
+                    <i class="align-middle" data-feather="file"></i> <span class="align-middle">Laporan</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\SliderController;
@@ -54,4 +55,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/pembayaran/data', [PembayaranController::class, 'data'])->name('pembayaran.data');
     Route::resource('/pembayaran', PembayaranController::class);
     Route::get('/pembayaran/storage/{filename}', [PembayaranController::class, 'getImagePembayaran'])->name('pembayaran.getImagePembayaran');
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+    Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
+    Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
 });
